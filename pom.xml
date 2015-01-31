@@ -114,6 +114,12 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <org.springframework.version>3.2.6.RELEASE</org.springframework.version>

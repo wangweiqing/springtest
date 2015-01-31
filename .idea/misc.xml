@@ -6,6 +6,9 @@
     <option name="id" value="1421818948081" />
     <option name="name" value="default" />
   </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="59683102E3EED48C60595E8BF9C00C7F" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
