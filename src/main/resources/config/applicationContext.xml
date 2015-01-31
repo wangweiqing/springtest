@@ -11,6 +11,7 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     <bean id="methodUnderTestTarget" class="com.wwq.springtest.aoptest.impl.MethodUnderTestImpl"/>
     <bean id="welcomeAdvice" class="com.wwq.springtest.advice.WelcomeAdvice"/>
+    <bean id="goodByeAdvice" class="com.wwq.springtest.advice.GoodByeAdvice"/>
     <bean id="methodUnderTest" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="proxyInterfaces">
             <value>com.wwq.springtest.aoptest.IMethodUnderTest</value>
@@ -18,6 +19,19 @@
         <property name="interceptorNames">
             <list>
                 <value>welcomeAdvice</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="methodUnderTestTarget"/>
+        </property>
+    </bean>
+    <bean id="methodAfterTest" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>com.wwq.springtest.aoptest.IMethodUnderTest</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>goodByeAdvice</value>
             </list>
         </property>
         <property name="target">

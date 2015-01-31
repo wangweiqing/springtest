@@ -20,8 +20,14 @@ import javax.annotation.Resource;
 public class AopTest {
     @Resource
     private IMethodUnderTest methodUnderTest;
+    @Resource
+    private IMethodUnderTest methodAfterTest;
     @Test
     public void beforeTest(){
         methodUnderTest.methodUnderTest();
+    }
+    @Test
+    public void afterTest(){
+        methodAfterTest.methodUnderTest();
     }
 }
