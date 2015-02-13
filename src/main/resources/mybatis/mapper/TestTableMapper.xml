@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwq.springtest.daotest.dao.TestTableMapper">
+    <resultMap id="BaseResultMap" type="com.wwq.springtest.daotest.domain.TestItem" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="md5" property="md5" jdbcType="VARCHAR" />
+    </resultMap>
+    <insert id="insert" parameterType="com.wwq.springtest.daotest.domain.TestItem" useGeneratedKeys="true" keyProperty="id" >
+        insert into test_table (md5)
+        values
+        (#{md5,jdbcType=VARCHAR})
+    </insert>
+    <select id="getMd5" parameterType="integer" resultType="com.wwq.springtest.daotest.domain.TestItem">
+        SELECT
+          id,md5
+        FROM
+          test_table
+        <where>
+          id=#{id, jdbcType=INTEGER }
+        </where>
+    </select>
+    <select id="getTestItem" resultMap="BaseResultMap">
+        SELECT
+          id,md5
+        FROM
+         test_table
+        <where>
+          md5 = ''
+        </where>
+    </select>
+</mapper>

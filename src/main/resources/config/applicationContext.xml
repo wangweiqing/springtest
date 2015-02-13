@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
-     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd ">
     <bean id="methodUnderTestTarget" class="com.wwq.springtest.aoptest.impl.MethodUnderTestImpl"/>
     <bean id="welcomeAdvice" class="com.wwq.springtest.advice.WelcomeAdvice"/>
     <bean id="goodByeAdvice" class="com.wwq.springtest.advice.GoodByeAdvice"/>
@@ -38,4 +32,28 @@
             <ref bean="methodUnderTestTarget"/>
         </property>
     </bean>
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://172.30.39.133:3306/poi_info?&amp;useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true" />
+        <property name="user" value="wwqtest" />
+        <property name="password" value="123456" />
+        <property name="minPoolSize" value="5" />
+        <property name="maxPoolSize" value="10" />
+        <property name="maxIdleTime" value="10" />
+        <property name="idleConnectionTestPeriod" value="240" />
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource" />
+        <property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml" />
+    </bean>
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wwq.springtest.daotest.dao" />
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate" />
+    </bean>
+    <context:component-scan base-package="com.wwq.springtest.daotest.dao; com.wwq.springtest.**.impl"></context:component-scan>
+
 </beans>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\maven\repository\mysql\mysql-connector-java\5.1.19\mysql-connector-java-5.1.19.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.30.39.133/poi_info" userId="wwqtest"
+                        password="123456" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.wwq.springtest.daotest.domain.gen"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!-- set的时候是否去除尾部空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper.gen"
+                         targetProject="./src/main/resources/mybatis">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.wwq.springtest.daotest.dao.gen" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="test_table" domainObjectName="TestTableGen">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
