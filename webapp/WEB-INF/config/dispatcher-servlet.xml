@@ -25,7 +25,7 @@
             </bean>    
 		</mvc:message-converters>   
 	</mvc:annotation-driven> 
-	<context:component-scan base-package="com.tuniu.ds.cowboy.**.controller;com.tuniu.operation.platform.llt"></context:component-scan>
+<!--	<context:component-scan base-package="com.tuniu.ds.cowboy.**.controller;com.tuniu.operation.platform.llt"></context:component-scan>
 	<context:annotation-config/>
 	<mvc:interceptors>  
 		<mvc:interceptor>
@@ -36,15 +36,15 @@
         </mvc:interceptor>
 	</mvc:interceptors>	
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-       <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+       &lt;!&ndash; <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
          <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="order" value="1"/> -->
+        <property name="order" value="1"/> &ndash;&gt;
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>      
       
      </bean>
      <mvc:resources mapping="/bootstrap/**" location="WEB-INF/bootstrap/**"/>
-     <mvc:resources mapping="/jquery-ui/**" location="WEB-INF/jquery-ui/**"/>
+     <mvc:resources mapping="/jquery-ui/**" location="WEB-INF/jquery-ui/**"/>-->
 	<!-- FreeMarker 视图 -->
 <!--	<bean id="freemarkerConfig"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
