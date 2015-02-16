@@ -54,6 +54,17 @@
         <property name="basePackage" value="com.wwq.springtest.daotest.dao" />
         <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate" />
     </bean>
+    <bean id="loggingInitialization"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass"
+                  value="com.wwq.springtest.init.LogConfigure" />
+        <property name="targetMethod" value="registLogConfiguration" />
+        <property name="arguments">
+            <list>
+                <value>classpath:config/logback.xml</value>
+            </list>
+        </property>
+    </bean>
     <context:component-scan base-package="com.wwq.springtest.daotest.dao; com.wwq.springtest.**.impl"></context:component-scan>
 
 </beans>

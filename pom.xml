@@ -165,6 +165,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -173,13 +183,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
-        <plugins>
+        <!--<plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
                 <executions>
-                    <execution>
+                    &lt;!&ndash;<execution>
                       <id>Generate Deltath DB Model</id>
                       <phase>generate-sources</phase>
                       <goals>
@@ -189,10 +199,10 @@
                         <configurationFile>${project.basedir}/src/main/resources/mybatis/generatorConfig.xml</configurationFile>
                         <overwrite>true</overwrite>
                       </configuration>
-                    </execution>
+                    </execution>&ndash;&gt;
                 </executions>
             </plugin>
-        </plugins>
+        </plugins>-->
     </build>
 
 
