@@ -5,11 +5,16 @@
 
 package com.wwq.springtest.aoptest.impl;
 
-import com.wwq.springtest.aoptest.IMethodUnderTest;
+        import com.wwq.springtest.aoptest.IMethodUnderTest;
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
 
 public class MethodUnderTestImpl implements IMethodUnderTest {
-  @Override
-  public void methodUnderTest() {
-    System.out.println("HELLO WORLD!");
-  }
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodUnderTestImpl.class);
+
+    @Override
+    public void methodUnderTest() {
+        //System.out.println("HELLO WORLD!");
+        LOGGER.info("HELLO WORLD!");
+    }
 }
