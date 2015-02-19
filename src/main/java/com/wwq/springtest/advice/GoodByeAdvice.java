@@ -12,11 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.aop.AfterReturningAdvice;
 
 public class GoodByeAdvice implements AfterReturningAdvice {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GoodByeAdvice.class);
 
-    @Override
-    public void afterReturning(Object o, Method method, Object[] objects, Object o2) throws Throwable {
-        //System.out.println("GOOD BYE HELLO WORLD!");
-        LOGGER.info("GOOD BYE HELLO WORLD!");
-    }
+  private static final Logger LOGGER = LoggerFactory.getLogger(GoodByeAdvice.class);
+
+  @Override
+  public void afterReturning(Object o, Method method, Object[] objects, Object o2)
+      throws Throwable {
+    //System.out.println("GOOD BYE HELLO WORLD!");
+    LOGGER.info("GOOD BYE HELLO WORLD!");
+  }
 }

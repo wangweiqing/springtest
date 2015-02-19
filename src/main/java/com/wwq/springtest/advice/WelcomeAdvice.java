@@ -12,10 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.aop.MethodBeforeAdvice;
 
 public class WelcomeAdvice implements MethodBeforeAdvice {
+
   private static final Logger LOGGER = LoggerFactory.getLogger(WelcomeAdvice.class);
+
   @Override
   public void before(Method method, Object[] objects, Object o) throws Throwable {
     //System.out.print("BEFORE HELLO WORLD!");
-      LOGGER.info("BEFORE HELLO WORLD!");
+    LOGGER.info("BEFORE HELLO WORLD!");
   }
 }
